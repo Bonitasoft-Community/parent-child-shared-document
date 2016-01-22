@@ -1,4 +1,4 @@
-# Sharing document between two process
+# Sharing document between two processes
 An example about sharing document between parent and child instance (call activity).
 
 ## Compatibility
