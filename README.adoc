@@ -1,0 +1,20 @@
+== Sharing document between two processes
+An example about sharing document between parent and child instance (using call activity).
+
+* The initial document value is defined by user uploading a file when instantiating parent process.
+* Document can be download in child process step. User can also upload a new version in child process step.
+* When execution goes back to parent process latest version of the document as uploaded in child process can be download.
+
+=== Compatibility
+Build and tested with Bonita BPM 7.2.2 Community Edition.
+Should be compatible with any later version and with Subscription edition.
+
+=== Known limitation
+This solution duplicate the document content:
+
+* When sending document from parent to child process
+* When offering the user the option to upload a new version of the document
+* When sending back the document from child to parent process
+
+=== Issues
+Please report issues / improvement requests using GitHub issues tracker.
