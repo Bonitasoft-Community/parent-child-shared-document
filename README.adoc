@@ -6,7 +6,7 @@ An example about sharing document between parent and child instance (using call 
 * When execution goes back to parent process latest version of the document as uploaded in child process can be download.
 
 === Compatibility
-Build and tested with Bonita BPM 7.2.2 Community Edition.
+Build and tested with Bonita BPM 7.3.3 Community Edition.
 Should be compatible with any later version and with Subscription edition.
 
 === Known limitation
