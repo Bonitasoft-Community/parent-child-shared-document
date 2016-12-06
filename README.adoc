@@ -13,7 +13,6 @@ Should be compatible with any later version and with Subscription edition.
 This solution duplicate the document content:
 
 * When sending document from parent to child process
-* When offering the user the option to upload a new version of the document
 * When sending back the document from child to parent process
 
 === Issues
