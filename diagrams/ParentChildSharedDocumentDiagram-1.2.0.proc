@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:decision="http://www.bonitasoft.org/ns/studio/process/decision" xmlns:expression="http://www.bonitasoft.org/ns/studio/expression" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process" xsi:schemaLocation="http://www.bonitasoft.org/ns/studio/process/decision http://www.bonitasoft.org/ns/studio/process#//decision">
+  <process:MainProcess xmi:id="_yZHnwLvGEeaDban8pwXLXw" name="ParentChildSharedDocumentDiagram" version="1.2.0" author="antoine" bonitaVersion="7.9.4" bonitaModelVersion="7.9.0-002" configId="ACED000574000E372E392E302D303032372E392E34">
+    <elements xmi:type="process:Pool" xmi:id="_yZHnwbvGEeaDban8pwXLXw" name="ParentPool" version="1.2.0">
+      <elements xmi:type="process:Lane" xmi:id="_yZHnwrvGEeaDban8pwXLXw" name="Employee lane" actor="_yZHoGrvGEeaDban8pwXLXw">
+        <elements xmi:type="process:StartEvent" xmi:id="_yZHnw7vGEeaDban8pwXLXw" name="Start1" outgoing="_yZHoDrvGEeaDban8pwXLXw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHnxbvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHnxrvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHnx7vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:CallActivity" xmi:id="_yZHnyLvGEeaDban8pwXLXw" name="ParentStep1" outgoing="_yZHoFLvGEeaDban8pwXLXw" incoming="_yZHoDrvGEeaDban8pwXLXw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHnyrvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHny7vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHnzLvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <data xmi:type="process:Data" xmi:id="_yZHnzbvGEeaDban8pwXLXw" documentation="We need to pass the document content id to the child process.&#xA;As an id type is Long, we need to use Text (String) data type as contract only support Integer.&#xA;We use a Groovy script do perform the Long -> String conversion and to set the variable value." name="mainDocumentContentId" dataType="_yZHoo7vGEeaDban8pwXLXw">
+            <defaultValue xmi:type="expression:Expression" xmi:id="_yZHnzrvGEeaDban8pwXLXw" name="getMainDocumentContentIdAsString" content="// We use the ProcessAPI to get the latest document content information and we return the id as a String&#xA;apiAccessor.processAPI.getLastDocument(processInstanceId, &quot;mainDoc&quot;).id.toString()" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT">
+              <referencedElements xmi:type="expression:Expression" xmi:id="_yZHnz7vGEeaDban8pwXLXw" name="processInstanceId" content="processInstanceId" type="TYPE_ENGINE_CONSTANT" returnType="java.lang.Long"/>
+              <referencedElements xmi:type="expression:Expression" xmi:id="_yZHn0LvGEeaDban8pwXLXw" name="apiAccessor" content="apiAccessor" type="TYPE_ENGINE_CONSTANT" returnType="org.bonitasoft.engine.api.APIAccessor"/>
+            </defaultValue>
+          </data>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_yZHn0bvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_yZHn0rvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_yZHn07vGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_yZHn1LvGEeaDban8pwXLXw" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_yZHn1bvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <inputMappings xmi:type="process:InputMapping" xmi:id="_yZHn1rvGEeaDban8pwXLXw" subprocessTarget="documentIdInput">
+            <processSource xmi:type="expression:Expression" xmi:id="_yZHn17vGEeaDban8pwXLXw" name="mainDocumentContentId" content="mainDocumentContentId" type="TYPE_VARIABLE">
+              <referencedElements xmi:type="process:Data" xmi:id="_ptLH5_p1EemX05Qhbs7qNw" documentation="We need to pass the document content id to the child process.&#xA;As an id type is Long, we need to use Text (String) data type as contract only support Integer.&#xA;We use a Groovy script do perform the Long -> String conversion and to set the variable value." name="mainDocumentContentId" dataType="_yZHoo7vGEeaDban8pwXLXw"/>
+            </processSource>
+          </inputMappings>
+          <outputMappings xmi:type="process:OutputMapping" xmi:id="_yZHn2bvGEeaDban8pwXLXw" subprocessSource="latestDocumentVersionId" processTarget="_yZHoBLvGEeaDban8pwXLXw"/>
+          <calledActivityName xmi:type="expression:Expression" xmi:id="_yZHn2rvGEeaDban8pwXLXw" name="ChildPool" content="ChildPool" returnTypeFixed="true"/>
+          <calledActivityVersion xmi:type="expression:Expression" xmi:id="_yZHn27vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:Task" xmi:id="_yZHn3LvGEeaDban8pwXLXw" name="ParentStep3" outgoing="_yZHoEbvGEeaDban8pwXLXw" incoming="_yZHoF7vGEeaDban8pwXLXw" overrideActorsOfTheLane="false">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHn3rvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHn37vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHn4LvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_yZHn4bvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_yZHn4rvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_yZHn47vGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_yZHn5LvGEeaDban8pwXLXw" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_yZHn5bvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <formMapping xmi:type="process:FormMapping" xmi:id="_yZHn6LvGEeaDban8pwXLXw">
+            <targetForm xmi:type="expression:Expression" xmi:id="_yZHn6bvGEeaDban8pwXLXw" name="ParentStep3" content="35078ea6-92bd-4c07-9a49-5065c5a2a53a" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+          </formMapping>
+          <contract xmi:type="process:Contract" xmi:id="_yZHn6rvGEeaDban8pwXLXw"/>
+          <expectedDuration xmi:type="expression:Expression" xmi:id="_ptLu9vp1EemX05Qhbs7qNw" name="3600000" content="3600000" returnType="java.lang.Long" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:EndEvent" xmi:id="_yZHn67vGEeaDban8pwXLXw" name="End1" incoming="_yZHoEbvGEeaDban8pwXLXw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHn7bvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHn7rvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHn77vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:ServiceTask" xmi:id="_yZHn8LvGEeaDban8pwXLXw" name="ParentStep2" outgoing="_yZHoF7vGEeaDban8pwXLXw" incoming="_yZHoFLvGEeaDban8pwXLXw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHn8rvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHn87vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHn9LvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <operations xmi:type="expression:Operation" xmi:id="_yZHn9bvGEeaDban8pwXLXw">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_yZHn9rvGEeaDban8pwXLXw" name="mainDoc" content="mainDoc" type="DOCUMENT_REF_TYPE">
+              <referencedElements xmi:type="process:Document" xmi:id="_ptM9Jfp1EemX05Qhbs7qNw" name="mainDoc"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_yZHn-LvGEeaDban8pwXLXw" name="returnChildDocumentContent" content="import org.bonitasoft.engine.api.ProcessAPI&#xA;import org.bonitasoft.engine.bpm.document.ArchivedDocument;&#xA;import org.bonitasoft.engine.bpm.document.Document&#xA;import org.bonitasoft.engine.bpm.document.DocumentValue&#xA;&#xA;// Get a reference to ProcessAPI&#xA;// We will use it to get the child document content&#xA;ProcessAPI processAPI = apiAccessor.processAPI&#xA;&#xA;// Get the child document. As child process is finished we need to use getArchivedVersionOfProcessDocument.&#xA;ArchivedDocument doc = processAPI.getArchivedVersionOfProcessDocument(latestDocumentVersionId);&#xA;&#xA;// Get the child process document content&#xA;byte[] documentContent = processAPI.getDocumentContent(doc.contentStorageId)&#xA;&#xA;// Creating a new document (duplication) with the exact same content as the child, same mime type and same file name&#xA;new DocumentValue(documentContent, doc.contentMimeType, doc.contentFileName)" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="org.bonitasoft.engine.bpm.document.DocumentValue">
+              <referencedElements xmi:type="expression:Expression" xmi:id="_yZHn-bvGEeaDban8pwXLXw" name="apiAccessor" content="apiAccessor" type="TYPE_ENGINE_CONSTANT" returnType="org.bonitasoft.engine.api.APIAccessor"/>
+              <referencedElements xmi:type="process:Data" xmi:id="_ptM9KPp1EemX05Qhbs7qNw" documentation="The id of the document as updated in the child process." name="latestDocumentVersionId" dataType="_yZHoobvGEeaDban8pwXLXw"/>
+            </rightOperand>
+            <operator xmi:type="expression:Operator" xmi:id="_yZHn-7vGEeaDban8pwXLXw" type="DOCUMENT_CREATE_UPDATE"/>
+          </operations>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_yZHn_LvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_yZHn_bvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_yZHn_rvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_yZHn_7vGEeaDban8pwXLXw" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_yZHoALvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:TextAnnotation" xmi:id="_yZHoAbvGEeaDban8pwXLXw" text="- Document is upload by user in instantiation form&#xA;- Document information are sent for process instantiation going through the contract (documentInput)&#xA;- Document data (mainDoc) default value is set using contract input&#xA;- Call activity local variable mainDocumentContentId is set with document id text value&#xA;- Callactivity instantiate child process mapping mainDocumentContentId to parentDocumentId child process variable&#xA;=== Child process running&#xA;- Child process variable latestDocumentVersionId is mapped to parent process latestDocumentVersionId (same name)&#xA;- In ParentStep2 an operation update mainDoc with a copy of the latest version of child process document (childDoc)"/>
+      </elements>
+      <data xmi:type="process:Data" xmi:id="_yZHoBLvGEeaDban8pwXLXw" documentation="The id of the document as updated in the child process." name="latestDocumentVersionId" dataType="_yZHoobvGEeaDban8pwXLXw">
+        <defaultValue xmi:type="expression:Expression" xmi:id="_yZHoBbvGEeaDban8pwXLXw" content="" returnType="java.lang.Long"/>
+      </data>
+      <formMapping xmi:type="process:FormMapping" xmi:id="_yZHoCLvGEeaDban8pwXLXw">
+        <targetForm xmi:type="expression:Expression" xmi:id="_yZHoCbvGEeaDban8pwXLXw" name="ParentPoolInit" content="724a5165-cafa-4ef7-8e29-88d43624b4da" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+      </formMapping>
+      <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_yZHoC7vGEeaDban8pwXLXw">
+        <targetForm xmi:type="expression:Expression" xmi:id="_yZHoDLvGEeaDban8pwXLXw" name="ParentPoolOverview" content="9b56eed5-13fd-49a5-ae54-4199dc6a5810" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+      </overviewFormMapping>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_yZHoDrvGEeaDban8pwXLXw" target="_yZHnyLvGEeaDban8pwXLXw" source="_yZHnw7vGEeaDban8pwXLXw">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_yZHoD7vGEeaDban8pwXLXw"/>
+        <condition xmi:type="expression:Expression" xmi:id="_yZHoELvGEeaDban8pwXLXw" name="" type="TYPE_CONDITION" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_yZHoEbvGEeaDban8pwXLXw" target="_yZHn67vGEeaDban8pwXLXw" source="_yZHn3LvGEeaDban8pwXLXw">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_yZHoErvGEeaDban8pwXLXw"/>
+        <condition xmi:type="expression:Expression" xmi:id="_yZHoE7vGEeaDban8pwXLXw" name="" type="TYPE_CONDITION" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_yZHoFLvGEeaDban8pwXLXw" target="_yZHn8LvGEeaDban8pwXLXw" source="_yZHnyLvGEeaDban8pwXLXw">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_yZHoFbvGEeaDban8pwXLXw"/>
+        <condition xmi:type="expression:Expression" xmi:id="_yZHoFrvGEeaDban8pwXLXw" name="" content="" type="TYPE_CONDITION" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_yZHoF7vGEeaDban8pwXLXw" target="_yZHn3LvGEeaDban8pwXLXw" source="_yZHn8LvGEeaDban8pwXLXw">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_yZHoGLvGEeaDban8pwXLXw"/>
+        <condition xmi:type="expression:Expression" xmi:id="_yZHoGbvGEeaDban8pwXLXw" name="" type="TYPE_CONDITION" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <actors xmi:type="process:Actor" xmi:id="_yZHoGrvGEeaDban8pwXLXw" documentation="This is an example of actor that is mapped to all ACME organization groups" name="Employee actor" initiator="true"/>
+      <contract xmi:type="process:Contract" xmi:id="_yZHoG7vGEeaDban8pwXLXw">
+        <inputs xmi:type="process:ContractInput" xmi:id="_yZHoHLvGEeaDban8pwXLXw" name="documentInput" type="FILE" description="The file to use in this process and to pass to the child process">
+          <mapping xmi:type="process:ContractInputMapping" xmi:id="_yZHoHbvGEeaDban8pwXLXw"/>
+        </inputs>
+      </contract>
+      <documents xmi:type="process:Document" xmi:id="_yZHoHrvGEeaDban8pwXLXw" documentation="This document is initialized by the file upload by user using the ParentPool instantiation form." name="mainDoc" documentType="CONTRACT" contractInput="_yZHoHLvGEeaDban8pwXLXw">
+        <mimeType xmi:type="expression:Expression" xmi:id="_yZHoH7vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        <url xmi:type="expression:Expression" xmi:id="_yZHoILvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        <initialMultipleContent xmi:type="expression:Expression" xmi:id="_yZHoIbvGEeaDban8pwXLXw" name="" content="" type="TYPE_READ_ONLY_SCRIPT" returnType="java.util.List" returnTypeFixed="true"/>
+      </documents>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHoIrvGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHoI7vGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHoJLvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHoJbvGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHoJrvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHoJ7vGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHoKLvGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHoKbvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHoKrvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHoK7vGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHoLLvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHoLbvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHoLrvGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHoL7vGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHoMLvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+    </elements>
+    <elements xmi:type="process:Pool" xmi:id="_yZHoMbvGEeaDban8pwXLXw" name="ChildPool" version="1.2.0">
+      <elements xmi:type="process:Lane" xmi:id="_yZHoMrvGEeaDban8pwXLXw" name="Employee lane" actor="_yZHoh7vGEeaDban8pwXLXw">
+        <elements xmi:type="process:StartEvent" xmi:id="_yZHoM7vGEeaDban8pwXLXw" name="Start2" outgoing="_yZHofbvGEeaDban8pwXLXw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHoNbvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHoNrvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHoN7vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:Task" xmi:id="_yZHoOLvGEeaDban8pwXLXw" name="ChildStep2" outgoing="_yZHog7vGEeaDban8pwXLXw" incoming="_yZHogLvGEeaDban8pwXLXw" overrideActorsOfTheLane="false">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHoOrvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHoO7vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHoPLvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <operations xmi:type="expression:Operation" xmi:id="_yZHoPbvGEeaDban8pwXLXw">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_yZHoPrvGEeaDban8pwXLXw" name="subDoc" content="subDoc" type="DOCUMENT_REF_TYPE">
+              <referencedElements xmi:type="process:Document" xmi:id="_ptNkIfp1EemX05Qhbs7qNw" name="subDoc"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_yZHoQLvGEeaDban8pwXLXw" name="docUpdateInput" content="import org.bonitasoft.engine.api.ProcessAPI&#xA;import org.bonitasoft.engine.bpm.contract.FileInputValue;&#xA;import org.bonitasoft.engine.bpm.document.Document&#xA;import org.bonitasoft.engine.bpm.document.DocumentValue&#xA;&#xA;// If we receive a new version of the document in the contract&#xA;if(docUpdateInput != null) {&#xA;&#x9;// Return the new document version to update document declared in sub-process&#xA;&#x9;return new DocumentValue(docUpdateInput.getContent(), docUpdateInput.getContentType(), docUpdateInput.getFileName());&#xA;} else {&#xA;&#x9;return new DocumentValue(subDoc.getId());&#xA;}" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="org.bonitasoft.engine.bpm.document.DocumentValue">
+              <referencedElements xmi:type="process:ContractInput" xmi:id="_ptNkI_p1EemX05Qhbs7qNw" name="docUpdateInput" type="FILE"/>
+              <referencedElements xmi:type="process:Document" xmi:id="_ptNkJPp1EemX05Qhbs7qNw" name="subDoc"/>
+            </rightOperand>
+            <operator xmi:type="expression:Operator" xmi:id="_yZHoQ7vGEeaDban8pwXLXw" type="DOCUMENT_CREATE_UPDATE"/>
+          </operations>
+          <operations xmi:type="expression:Operation" xmi:id="_yZHoRLvGEeaDban8pwXLXw">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_yZHoRbvGEeaDban8pwXLXw" name="latestDocumentVersionId" content="latestDocumentVersionId" type="TYPE_VARIABLE" returnType="java.lang.Long">
+              <referencedElements xmi:type="process:Data" xmi:id="_ptNkJ_p1EemX05Qhbs7qNw" name="latestDocumentVersionId" dataType="_yZHoobvGEeaDban8pwXLXw"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_yZHoR7vGEeaDban8pwXLXw" name="extractDocumentId" content="// We use the ProcessAPI to get the latest document content information and we return the id&#xA;apiAccessor.processAPI.getLastDocument(processInstanceId, &quot;subDoc&quot;).id" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Long">
+              <referencedElements xmi:type="expression:Expression" xmi:id="_yZHoSLvGEeaDban8pwXLXw" name="processInstanceId" content="processInstanceId" type="TYPE_ENGINE_CONSTANT" returnType="java.lang.Long"/>
+              <referencedElements xmi:type="expression:Expression" xmi:id="_yZHoSbvGEeaDban8pwXLXw" name="apiAccessor" content="apiAccessor" type="TYPE_ENGINE_CONSTANT" returnType="org.bonitasoft.engine.api.APIAccessor"/>
+            </rightOperand>
+            <operator xmi:type="expression:Operator" xmi:id="_yZHoSrvGEeaDban8pwXLXw" type="ASSIGNMENT"/>
+          </operations>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_yZHoS7vGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_yZHoTLvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_yZHoTbvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_yZHoTrvGEeaDban8pwXLXw" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_yZHoT7vGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <formMapping xmi:type="process:FormMapping" xmi:id="_yZHoUrvGEeaDban8pwXLXw">
+            <targetForm xmi:type="expression:Expression" xmi:id="_yZHoU7vGEeaDban8pwXLXw" name="ChildStep2" content="6eb9655d-0ba4-4c6b-8ea5-9177dcebaa46" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+          </formMapping>
+          <contract xmi:type="process:Contract" xmi:id="_yZHoVLvGEeaDban8pwXLXw">
+            <inputs xmi:type="process:ContractInput" xmi:id="_yZHoVbvGEeaDban8pwXLXw" name="docUpdateInput" type="FILE"/>
+          </contract>
+          <expectedDuration xmi:type="expression:Expression" xmi:id="_ptLvA_p1EemX05Qhbs7qNw" name="3600000" content="3600000" returnType="java.lang.Long" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:EndEvent" xmi:id="_yZHoVrvGEeaDban8pwXLXw" name="End2" incoming="_yZHog7vGEeaDban8pwXLXw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHoWLvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHoWbvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHoWrvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:ServiceTask" xmi:id="_yZHoW7vGEeaDban8pwXLXw" name="ChildStep1" outgoing="_yZHogLvGEeaDban8pwXLXw" incoming="_yZHofbvGEeaDban8pwXLXw">
+          <dynamicLabel xmi:type="expression:Expression" xmi:id="_yZHoXbvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <dynamicDescription xmi:type="expression:Expression" xmi:id="_yZHoXrvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <stepSummary xmi:type="expression:Expression" xmi:id="_yZHoX7vGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+          <operations xmi:type="expression:Operation" xmi:id="_yZHoYLvGEeaDban8pwXLXw">
+            <leftOperand xmi:type="expression:Expression" xmi:id="_yZHoYbvGEeaDban8pwXLXw" name="subDoc" content="subDoc" type="DOCUMENT_REF_TYPE">
+              <referencedElements xmi:type="process:Document" xmi:id="_ptNkLfp1EemX05Qhbs7qNw" name="subDoc"/>
+            </leftOperand>
+            <rightOperand xmi:type="expression:Expression" xmi:id="_yZHoY7vGEeaDban8pwXLXw" name="duplicateParentProcessContent" content="import org.bonitasoft.engine.api.ProcessAPI&#xA;import org.bonitasoft.engine.bpm.document.Document&#xA;import org.bonitasoft.engine.bpm.document.DocumentValue&#xA;&#xA;// Get a reference to ProcessAPI&#xA;// We will use it to get the parent document content&#xA;ProcessAPI processAPI = apiAccessor.processAPI&#xA;&#xA;// Get the parent process document information&#xA;Document doc = processAPI.getDocument(parentDocumentId)&#xA;&#xA;// Get the parent process document content&#xA;byte[] documentContent = processAPI.getDocumentContent(doc.contentStorageId)&#xA;&#xA;// Creating a new document (duplication) with the exact same content as the parent, same mime type and same file name&#xA;new DocumentValue(documentContent, doc.contentMimeType, doc.contentFileName)" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="org.bonitasoft.engine.bpm.document.DocumentValue">
+              <referencedElements xmi:type="expression:Expression" xmi:id="_yZHoZLvGEeaDban8pwXLXw" name="apiAccessor" content="apiAccessor" type="TYPE_ENGINE_CONSTANT" returnType="org.bonitasoft.engine.api.APIAccessor"/>
+              <referencedElements xmi:type="process:Data" xmi:id="_ptNkMPp1EemX05Qhbs7qNw" documentation="We cannot use contract input value to set the default value of the document.&#xA;Workaround used here is to store the document content id received in the contract and use it later in an operation on a service task to initialize the document." name="parentDocumentId" dataType="_yZHoobvGEeaDban8pwXLXw"/>
+            </rightOperand>
+            <operator xmi:type="expression:Operator" xmi:id="_yZHoZrvGEeaDban8pwXLXw" type="DOCUMENT_CREATE_UPDATE"/>
+          </operations>
+          <loopCondition xmi:type="expression:Expression" xmi:id="_yZHoZ7vGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+          <loopMaximum xmi:type="expression:Expression" xmi:id="_yZHoaLvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <cardinalityExpression xmi:type="expression:Expression" xmi:id="_yZHoabvGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Integer" returnTypeFixed="true"/>
+          <iteratorExpression xmi:type="expression:Expression" xmi:id="_yZHoarvGEeaDban8pwXLXw" name="multiInstanceIterator" content="multiInstanceIterator" type="MULTIINSTANCE_ITERATOR_TYPE" returnType="java.lang.Object" returnTypeFixed="true"/>
+          <completionCondition xmi:type="expression:Expression" xmi:id="_yZHoa7vGEeaDban8pwXLXw" name="" content="" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+        </elements>
+        <elements xmi:type="process:TextAnnotation" xmi:id="_yZHobLvGEeaDban8pwXLXw" text="- Parent process call activty mapping set documentIdInput contract value with the parent document id (text value)&#xA;- Process variable parentDocumentId is set with documentIdInput contract input value convert to long value&#xA;- ChildStep1 set subDoc document value with a copy of parent process document (mainDoc) value&#xA;- When user submit ChildStep2 subDoc is updated by an operation that use step contract input (docUpdateInput) if a new document is provided or by a copy of the previous subDoc value if no new version is provided&#xA;- Also in ChildStep2 an operation update latestDocumentVersionId process variable with the id of the latest version of subDoc document"/>
+      </elements>
+      <data xmi:type="process:Data" xmi:id="_yZHob7vGEeaDban8pwXLXw" documentation="We cannot use contract input value to set the default value of the document.&#xA;Workaround used here is to store the document content id received in the contract and use it later in an operation on a service task to initialize the document." name="parentDocumentId" dataType="_yZHoobvGEeaDban8pwXLXw">
+        <defaultValue xmi:type="expression:Expression" xmi:id="_yZHocLvGEeaDban8pwXLXw" name="convertTextToLong" content="// As Long is not supported in contract we use text (String) contract input&#xA;// We need to convert the String value to a Long value in order to use it later with Engine API.&#xA;Long.valueOf(documentIdInput)" interpreter="GROOVY" type="TYPE_READ_ONLY_SCRIPT" returnType="java.lang.Long">
+          <referencedElements xmi:type="process:ContractInput" xmi:id="_ptLH5Pp1EemX05Qhbs7qNw" name="documentIdInput">
+            <mapping xmi:type="process:ContractInputMapping" xmi:id="_ptOyTPp1EemX05Qhbs7qNw"/>
+          </referencedElements>
+        </defaultValue>
+      </data>
+      <data xmi:type="process:Data" xmi:id="_yZHoc7vGEeaDban8pwXLXw" name="latestDocumentVersionId" dataType="_yZHoobvGEeaDban8pwXLXw">
+        <defaultValue xmi:type="expression:Expression" xmi:id="_yZHodLvGEeaDban8pwXLXw" content="" returnType="java.lang.Long"/>
+      </data>
+      <formMapping xmi:type="process:FormMapping" xmi:id="_yZHod7vGEeaDban8pwXLXw" type="NONE">
+        <targetForm xmi:type="expression:Expression" xmi:id="_yZHoeLvGEeaDban8pwXLXw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+      </formMapping>
+      <overviewFormMapping xmi:type="process:FormMapping" xmi:id="_yZHoervGEeaDban8pwXLXw" type="NONE">
+        <targetForm xmi:type="expression:Expression" xmi:id="_yZHoe7vGEeaDban8pwXLXw" name="" content="" type="FORM_REFERENCE_TYPE" returnTypeFixed="true"/>
+      </overviewFormMapping>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_yZHofbvGEeaDban8pwXLXw" target="_yZHoW7vGEeaDban8pwXLXw" source="_yZHoM7vGEeaDban8pwXLXw">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_yZHofrvGEeaDban8pwXLXw"/>
+        <condition xmi:type="expression:Expression" xmi:id="_yZHof7vGEeaDban8pwXLXw" name="" type="TYPE_CONDITION" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_yZHogLvGEeaDban8pwXLXw" target="_yZHoOLvGEeaDban8pwXLXw" source="_yZHoW7vGEeaDban8pwXLXw">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_yZHogbvGEeaDban8pwXLXw"/>
+        <condition xmi:type="expression:Expression" xmi:id="_yZHogrvGEeaDban8pwXLXw" name="" type="TYPE_CONDITION" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_yZHog7vGEeaDban8pwXLXw" target="_yZHoVrvGEeaDban8pwXLXw" source="_yZHoOLvGEeaDban8pwXLXw">
+        <decisionTable xmi:type="decision:DecisionTable" xmi:id="_yZHohbvGEeaDban8pwXLXw"/>
+        <condition xmi:type="expression:Expression" xmi:id="_yZHohrvGEeaDban8pwXLXw" name="" content="" type="TYPE_CONDITION" returnType="java.lang.Boolean" returnTypeFixed="true"/>
+      </connections>
+      <actors xmi:type="process:Actor" xmi:id="_yZHoh7vGEeaDban8pwXLXw" name="EmployeeActor"/>
+      <contract xmi:type="process:Contract" xmi:id="_yZHoiLvGEeaDban8pwXLXw">
+        <inputs xmi:type="process:ContractInput" xmi:id="_yZHoibvGEeaDban8pwXLXw" name="documentIdInput">
+          <mapping xmi:type="process:ContractInputMapping" xmi:id="_yZHoirvGEeaDban8pwXLXw"/>
+        </inputs>
+      </contract>
+      <documents xmi:type="process:Document" xmi:id="_yZHoi7vGEeaDban8pwXLXw" documentation="We cannot use the contract input to initialize the document.&#xA;Workaround is to use a process variable to store the document&#xA;content id and an operation on the service task to initialize the document." name="subDoc">
+        <mimeType xmi:type="expression:Expression" xmi:id="_yZHojLvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        <url xmi:type="expression:Expression" xmi:id="_yZHojbvGEeaDban8pwXLXw" name="" content="" returnTypeFixed="true"/>
+        <initialMultipleContent xmi:type="expression:Expression" xmi:id="_yZHojrvGEeaDban8pwXLXw" name="" content="" type="TYPE_READ_ONLY_SCRIPT" returnType="java.util.List" returnTypeFixed="true"/>
+      </documents>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHoj7vGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHokLvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHokbvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHokrvGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHok7vGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHolLvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHolbvGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHolrvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHol7vGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHomLvGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHombvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHomrvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+      <searchIndexes xmi:type="process:SearchIndex" xmi:id="_yZHom7vGEeaDban8pwXLXw">
+        <name xmi:type="expression:Expression" xmi:id="_yZHonLvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+        <value xmi:type="expression:Expression" xmi:id="_yZHonbvGEeaDban8pwXLXw" content="" returnTypeFixed="true"/>
+      </searchIndexes>
+    </elements>
+    <datatypes xmi:type="process:BooleanType" xmi:id="_yZHonrvGEeaDban8pwXLXw" name="Boolean"/>
+    <datatypes xmi:type="process:DateType" xmi:id="_yZHon7vGEeaDban8pwXLXw" name="Date"/>
+    <datatypes xmi:type="process:IntegerType" xmi:id="_yZHooLvGEeaDban8pwXLXw" name="Integer"/>
+    <datatypes xmi:type="process:LongType" xmi:id="_yZHoobvGEeaDban8pwXLXw" name="Long"/>
+    <datatypes xmi:type="process:DoubleType" xmi:id="_yZHoorvGEeaDban8pwXLXw" name="Double"/>
+    <datatypes xmi:type="process:StringType" xmi:id="_yZHoo7vGEeaDban8pwXLXw" name="Text"/>
+    <datatypes xmi:type="process:JavaType" xmi:id="_yZHopLvGEeaDban8pwXLXw" name="Java_object"/>
+    <datatypes xmi:type="process:XMLType" xmi:id="_yZHopbvGEeaDban8pwXLXw" name="XML"/>
+    <datatypes xmi:type="process:BusinessObjectType" xmi:id="_yZHoprvGEeaDban8pwXLXw" name="Business_Object"/>
+  </process:MainProcess>
+  <notation:Diagram xmi:id="_yZHop7vGEeaDban8pwXLXw" type="Process" element="_yZHnwLvGEeaDban8pwXLXw" name="MyDiagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_yZHoqLvGEeaDban8pwXLXw" type="2007" element="_yZHnwbvGEeaDban8pwXLXw">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZHoqbvGEeaDban8pwXLXw" type="5008" element="_yZHnwbvGEeaDban8pwXLXw"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZHoqrvGEeaDban8pwXLXw" type="7001" element="_yZHnwbvGEeaDban8pwXLXw">
+        <children xmi:type="notation:Node" xmi:id="_yZHoq7vGEeaDban8pwXLXw" type="3007" element="_yZHnwrvGEeaDban8pwXLXw">
+          <children xmi:type="notation:DecorationNode" xmi:id="_yZHorLvGEeaDban8pwXLXw" type="5007" element="_yZHnwrvGEeaDban8pwXLXw"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_yZIO0LvGEeaDban8pwXLXw" type="7002" element="_yZHnwrvGEeaDban8pwXLXw">
+            <children xmi:type="notation:Shape" xmi:id="_yZIO0bvGEeaDban8pwXLXw" type="3002" element="_yZHnw7vGEeaDban8pwXLXw" fontName="Sans Serif">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO0rvGEeaDban8pwXLXw" type="5024" element="_yZHnw7vGEeaDban8pwXLXw">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIO07vGEeaDban8pwXLXw" y="5"/>
+              </children>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO1LvGEeaDban8pwXLXw" x="60" y="43"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_yZIO1bvGEeaDban8pwXLXw" type="3063" element="_yZHnyLvGEeaDban8pwXLXw" fontName="Sans Serif" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO1rvGEeaDban8pwXLXw" type="5093" element="_yZHnyLvGEeaDban8pwXLXw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO17vGEeaDban8pwXLXw" x="149" y="27" width="123" height="62"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_yZIO2LvGEeaDban8pwXLXw" type="3005" element="_yZHn3LvGEeaDban8pwXLXw" fontName="Sans Serif" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO2bvGEeaDban8pwXLXw" type="5005" element="_yZHn3LvGEeaDban8pwXLXw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO2rvGEeaDban8pwXLXw" x="519" y="27" width="124" height="62"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_yZIO27vGEeaDban8pwXLXw" type="3003" element="_yZHn67vGEeaDban8pwXLXw" fontName="Sans Serif">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO3LvGEeaDban8pwXLXw" type="5025" element="_yZHn67vGEeaDban8pwXLXw">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIO3bvGEeaDban8pwXLXw" y="5"/>
+              </children>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO3rvGEeaDban8pwXLXw" x="709" y="43"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_yZIO37vGEeaDban8pwXLXw" type="3027" element="_yZHn8LvGEeaDban8pwXLXw" fontName="DejaVu Sans" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO4LvGEeaDban8pwXLXw" type="5017" element="_yZHn8LvGEeaDban8pwXLXw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO4bvGEeaDban8pwXLXw" x="329" y="27" width="123" height="61"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_yZIO4rvGEeaDban8pwXLXw" type="3015" element="_yZHoAbvGEeaDban8pwXLXw">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO47vGEeaDban8pwXLXw" type="5010" element="_yZHoAbvGEeaDban8pwXLXw"/>
+              <styles xmi:type="notation:DescriptionStyle" xmi:id="_yZIO5LvGEeaDban8pwXLXw"/>
+              <styles xmi:type="notation:FontStyle" xmi:id="_yZIO5bvGEeaDban8pwXLXw" fontName="DejaVu Sans"/>
+              <styles xmi:type="notation:LineStyle" xmi:id="_yZIO5rvGEeaDban8pwXLXw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO57vGEeaDban8pwXLXw" x="82" y="122" width="799" height="191"/>
+            </children>
+          </children>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_yZIO6LvGEeaDban8pwXLXw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_yZIO6bvGEeaDban8pwXLXw" fontName="Sans Serif"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_yZIO6rvGEeaDban8pwXLXw"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_yZIO67vGEeaDban8pwXLXw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO7LvGEeaDban8pwXLXw" x="44" y="10" width="979" height="351"/>
+        </children>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_yZIO7bvGEeaDban8pwXLXw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIO7rvGEeaDban8pwXLXw" fontName="Sans Serif"/>
+      <styles xmi:type="notation:LineStyle" xmi:id="_yZIO77vGEeaDban8pwXLXw"/>
+      <styles xmi:type="notation:FillStyle" xmi:id="_yZIO8LvGEeaDban8pwXLXw"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO8bvGEeaDban8pwXLXw" width="930" height="250"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_yZIO8rvGEeaDban8pwXLXw" type="2007" element="_yZHoMbvGEeaDban8pwXLXw">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIO87vGEeaDban8pwXLXw" type="5008" element="_yZHoMbvGEeaDban8pwXLXw"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIO9LvGEeaDban8pwXLXw" type="7001" element="_yZHoMbvGEeaDban8pwXLXw">
+        <children xmi:type="notation:Node" xmi:id="_yZIO9bvGEeaDban8pwXLXw" type="3007" element="_yZHoMrvGEeaDban8pwXLXw">
+          <children xmi:type="notation:DecorationNode" xmi:id="_yZIO9rvGEeaDban8pwXLXw" type="5007" element="_yZHoMrvGEeaDban8pwXLXw"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_yZIO97vGEeaDban8pwXLXw" type="7002" element="_yZHoMrvGEeaDban8pwXLXw">
+            <children xmi:type="notation:Shape" xmi:id="_yZIO-LvGEeaDban8pwXLXw" type="3002" element="_yZHoM7vGEeaDban8pwXLXw" fontName="Sans Serif">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO-bvGEeaDban8pwXLXw" type="5024" element="_yZHoM7vGEeaDban8pwXLXw">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIO-rvGEeaDban8pwXLXw" y="5"/>
+              </children>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO-7vGEeaDban8pwXLXw" x="60" y="36"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_yZIO_LvGEeaDban8pwXLXw" type="3005" element="_yZHoOLvGEeaDban8pwXLXw" fontName="Sans Serif" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIO_bvGEeaDban8pwXLXw" type="5005" element="_yZHoOLvGEeaDban8pwXLXw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIO_rvGEeaDban8pwXLXw" x="316" y="22" width="116" height="58"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_yZIO_7vGEeaDban8pwXLXw" type="3003" element="_yZHoVrvGEeaDban8pwXLXw" fontName="Sans Serif">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIPALvGEeaDban8pwXLXw" type="5025" element="_yZHoVrvGEeaDban8pwXLXw">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPAbvGEeaDban8pwXLXw" y="5"/>
+              </children>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIPArvGEeaDban8pwXLXw" x="481" y="36"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_yZIPA7vGEeaDban8pwXLXw" type="3027" element="_yZHoW7vGEeaDban8pwXLXw" fontName="Sans Serif" fillColor="14334392" lineColor="10710316">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIPBLvGEeaDban8pwXLXw" type="5017" element="_yZHoW7vGEeaDban8pwXLXw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIPBbvGEeaDban8pwXLXw" x="149" y="24" width="110" height="55"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_yZIPBrvGEeaDban8pwXLXw" type="3015" element="_yZHobLvGEeaDban8pwXLXw">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yZIPB7vGEeaDban8pwXLXw" type="5010" element="_yZHobLvGEeaDban8pwXLXw"/>
+              <styles xmi:type="notation:DescriptionStyle" xmi:id="_yZIPCLvGEeaDban8pwXLXw"/>
+              <styles xmi:type="notation:FontStyle" xmi:id="_yZIPCbvGEeaDban8pwXLXw" fontName="DejaVu Sans"/>
+              <styles xmi:type="notation:LineStyle" xmi:id="_yZIPCrvGEeaDban8pwXLXw"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIPC7vGEeaDban8pwXLXw" x="89" y="112" width="792" height="153"/>
+            </children>
+          </children>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_yZIPDLvGEeaDban8pwXLXw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_yZIPDbvGEeaDban8pwXLXw" fontName="Sans Serif"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_yZIPDrvGEeaDban8pwXLXw"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_yZIPD7vGEeaDban8pwXLXw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIPELvGEeaDban8pwXLXw" x="44" y="10" width="979" height="330"/>
+        </children>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_yZIPEbvGEeaDban8pwXLXw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPErvGEeaDban8pwXLXw" fontName="Sans Serif"/>
+      <styles xmi:type="notation:LineStyle" xmi:id="_yZIPE7vGEeaDban8pwXLXw"/>
+      <styles xmi:type="notation:FillStyle" xmi:id="_yZIPFLvGEeaDban8pwXLXw"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yZIPFbvGEeaDban8pwXLXw" width="930" height="250"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_yZIPFrvGEeaDban8pwXLXw"/>
+    <edges xmi:type="notation:Connector" xmi:id="_yZIPF7vGEeaDban8pwXLXw" type="4001" element="_yZHoDrvGEeaDban8pwXLXw" source="_yZIO0bvGEeaDban8pwXLXw" target="_yZIO1bvGEeaDban8pwXLXw" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIPGLvGEeaDban8pwXLXw" type="6001" element="_yZHoDrvGEeaDban8pwXLXw">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPGbvGEeaDban8pwXLXw" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPGrvGEeaDban8pwXLXw" fontName="Sans Serif"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yZIPG7vGEeaDban8pwXLXw" points="[0, 0, -60, 0]$[60, 0, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPHLvGEeaDban8pwXLXw" id="(1.0,0.5)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPHbvGEeaDban8pwXLXw" id="(0.0,0.5)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_yZIPHrvGEeaDban8pwXLXw" type="4001" element="_yZHoEbvGEeaDban8pwXLXw" source="_yZIO2LvGEeaDban8pwXLXw" target="_yZIO27vGEeaDban8pwXLXw" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIPH7vGEeaDban8pwXLXw" type="6001" element="_yZHoEbvGEeaDban8pwXLXw">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPILvGEeaDban8pwXLXw" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPIbvGEeaDban8pwXLXw" fontName="Sans Serif"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yZIPIrvGEeaDban8pwXLXw" points="[0, 0, -60, 0]$[60, 0, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPI7vGEeaDban8pwXLXw" id="(1.0,0.5)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPJLvGEeaDban8pwXLXw" id="(0.0,0.5)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_yZIPJbvGEeaDban8pwXLXw" type="4001" element="_yZHofbvGEeaDban8pwXLXw" source="_yZIO-LvGEeaDban8pwXLXw" target="_yZIPA7vGEeaDban8pwXLXw" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIPJrvGEeaDban8pwXLXw" type="6001" element="_yZHofbvGEeaDban8pwXLXw">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPJ7vGEeaDban8pwXLXw" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPKLvGEeaDban8pwXLXw" fontName="Sans Serif"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yZIPKbvGEeaDban8pwXLXw" points="[0, 0, -60, 0]$[60, 0, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPKrvGEeaDban8pwXLXw" id="(1.0,0.5)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPK7vGEeaDban8pwXLXw" id="(0.0,0.4909090909090909)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_yZIPLLvGEeaDban8pwXLXw" type="4001" element="_yZHogLvGEeaDban8pwXLXw" source="_yZIPA7vGEeaDban8pwXLXw" target="_yZIO_LvGEeaDban8pwXLXw" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIPLbvGEeaDban8pwXLXw" type="6001" element="_yZHogLvGEeaDban8pwXLXw">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPLrvGEeaDban8pwXLXw" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPL7vGEeaDban8pwXLXw" fontName="Sans Serif"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yZIPMLvGEeaDban8pwXLXw" points="[0, 0, -60, 0]$[60, 0, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPMbvGEeaDban8pwXLXw" id="(1.0,0.4909090909090909)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPMrvGEeaDban8pwXLXw" id="(0.0,0.5)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_yZIPM7vGEeaDban8pwXLXw" type="4001" element="_yZHoFLvGEeaDban8pwXLXw" source="_yZIO1bvGEeaDban8pwXLXw" target="_yZIO37vGEeaDban8pwXLXw" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIPNLvGEeaDban8pwXLXw" type="6001" element="_yZHoFLvGEeaDban8pwXLXw">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPNbvGEeaDban8pwXLXw" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPNrvGEeaDban8pwXLXw" fontName="DejaVu Sans"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yZIPN7vGEeaDban8pwXLXw" points="[0, 0, -60, 0]$[60, 0, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPOLvGEeaDban8pwXLXw" id="(1.0,0.5)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPObvGEeaDban8pwXLXw" id="(0.0,0.4918032786885246)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_yZIPOrvGEeaDban8pwXLXw" type="4001" element="_yZHoF7vGEeaDban8pwXLXw" source="_yZIO37vGEeaDban8pwXLXw" target="_yZIO2LvGEeaDban8pwXLXw" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIPO7vGEeaDban8pwXLXw" type="6001" element="_yZHoF7vGEeaDban8pwXLXw">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPPLvGEeaDban8pwXLXw" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPPbvGEeaDban8pwXLXw" fontName="DejaVu Sans"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yZIPPrvGEeaDban8pwXLXw" points="[0, 0, -60, 0]$[60, 0, 0, 0]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPP7vGEeaDban8pwXLXw" id="(1.0,0.4918032786885246)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPQLvGEeaDban8pwXLXw" id="(0.0,0.5)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_yZIPQbvGEeaDban8pwXLXw" type="4001" element="_yZHog7vGEeaDban8pwXLXw" source="_yZIO_LvGEeaDban8pwXLXw" target="_yZIO_7vGEeaDban8pwXLXw" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_yZIPQrvGEeaDban8pwXLXw" type="6001" element="_yZHog7vGEeaDban8pwXLXw">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_yZIPQ7vGEeaDban8pwXLXw" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yZIPRLvGEeaDban8pwXLXw" fontName="DejaVu Sans"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yZIPRbvGEeaDban8pwXLXw" points="[0, -2, -243, 1]$[241, 11, -2, 14]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZIPRrvGEeaDban8pwXLXw" id="(1.0,0.5517241379310345)"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

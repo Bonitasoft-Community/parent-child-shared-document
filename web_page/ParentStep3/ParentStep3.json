@@ -1,0 +1,249 @@
+{
+  "designerVersion" : "1.9.24",
+  "previousDesignerVersion" : "1.2.9",
+  "id" : "ParentStep3",
+  "name" : "ParentStep3",
+  "lastUpdate" : 1572372230626,
+  "rows" : [ [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "text" : {
+        "type" : "interpolation",
+        "value" : "Download: {{context.mainDoc_ref.fileName}}"
+      },
+      "targetUrl" : {
+        "type" : "expression",
+        "value" : "documentDownloadURL"
+      },
+      "alignment" : {
+        "type" : "constant",
+        "value" : "left"
+      },
+      "buttonStyle" : {
+        "type" : "constant",
+        "value" : "link"
+      }
+    },
+    "reference" : "dcf07c3d-4fb8-4530-8bc0-19cf7c482fef",
+    "hasValidationError" : false,
+    "id" : "pbLink"
+  } ], [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12
+    },
+    "propertyValues" : {
+      "alignment" : {
+        "type" : "constant",
+        "value" : "center"
+      },
+      "isDisplayed" : {
+        "type" : "constant",
+        "value" : true
+      },
+      "targetUrlOnSuccess" : {
+        "type" : "interpolation",
+        "value" : "/bonita"
+      },
+      "class" : {
+        "type" : "constant",
+        "value" : "org.bonitasoft.web.designer.experimental.parametrizedWidget.ButtonWidget"
+      },
+      "label" : {
+        "type" : "interpolation",
+        "value" : "Submit"
+      },
+      "buttonStyle" : {
+        "type" : "constant",
+        "value" : "primary"
+      },
+      "dimension" : {
+        "type" : "constant",
+        "value" : 12
+      },
+      "collectionToModify" : {
+        "type" : "variable"
+      },
+      "widgetId" : {
+        "type" : "constant",
+        "value" : "pbButton"
+      },
+      "action" : {
+        "type" : "constant",
+        "value" : "Submit task"
+      },
+      "labelHidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "dataToSend" : {
+        "type" : "expression",
+        "value" : "formOutput"
+      },
+      "readonly" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "disabled" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "url" : {
+        "type" : "interpolation"
+      },
+      "dataFromSuccess" : {
+        "type" : "variable"
+      },
+      "dataFromError" : {
+        "type" : "variable"
+      },
+      "collectionPosition" : {
+        "type" : "constant",
+        "value" : "Last"
+      },
+      "valueToAdd" : {
+        "type" : "constant"
+      },
+      "removeItem" : {
+        "type" : "variable"
+      }
+    },
+    "reference" : "aeb079ad-a2cf-4957-9ebc-f39b229212d0",
+    "hasValidationError" : false,
+    "id" : "pbButton"
+  } ], [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "text" : {
+        "type" : "interpolation",
+        "value" : "Debug"
+      },
+      "level" : {
+        "type" : "constant",
+        "value" : "Level 2"
+      },
+      "alignment" : {
+        "type" : "constant",
+        "value" : "left"
+      }
+    },
+    "reference" : "5c41533e-2e49-4436-9548-60d474d8e207",
+    "hasValidationError" : false,
+    "id" : "pbTitle"
+  } ], [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "text" : {
+        "type" : "interpolation",
+        "value" : "context: {{ context | json }}"
+      },
+      "alignment" : {
+        "type" : "constant",
+        "value" : "left"
+      },
+      "allowHTML" : {
+        "type" : "constant",
+        "value" : true
+      },
+      "labelHidden" : {
+        "type" : "constant",
+        "value" : true
+      },
+      "label" : {
+        "type" : "interpolation",
+        "value" : ""
+      },
+      "labelPosition" : {
+        "type" : "constant",
+        "value" : "top"
+      },
+      "labelWidth" : {
+        "type" : "constant",
+        "value" : 4
+      }
+    },
+    "reference" : "da163f73-5153-44a7-9915-3a0d0357311c",
+    "hasValidationError" : false,
+    "id" : "pbText"
+  } ] ],
+  "assets" : [ {
+    "id" : "e9984dee-eacc-46b6-8bce-3f84430a7000",
+    "name" : "style.css",
+    "type" : "css",
+    "order" : 1,
+    "external" : false
+  } ],
+  "inactiveAssets" : [ ],
+  "data" : {
+    "taskId" : {
+      "type" : "urlparameter",
+      "value" : "id",
+      "exposed" : false
+    },
+    "formOutput" : {
+      "type" : "expression",
+      "value" : "return {\n\n};",
+      "exposed" : false
+    },
+    "context" : {
+      "type" : "url",
+      "value" : "/bonita/API/bpm/userTask/{{taskId}}/context",
+      "exposed" : false
+    },
+    "formInput" : {
+      "type" : "json",
+      "value" : "{ }",
+      "exposed" : false
+    },
+    "documentDownloadURL" : {
+      "type" : "expression",
+      "value" : "return \"/bonita/portal/\" + $data.context.mainDoc_ref.url;",
+      "exposed" : false
+    }
+  },
+  "hasValidationError" : false,
+  "uuid" : "35078ea6-92bd-4c07-9a49-5065c5a2a53a",
+  "type" : "form",
+  "description" : "Page generated with Bonita UI designer"
+}

@@ -1,0 +1,177 @@
+{
+  "designerVersion" : "1.9.24",
+  "previousDesignerVersion" : "1.2.9",
+  "id" : "ParentPoolOverview",
+  "name" : "ParentPoolOverview",
+  "lastUpdate" : 1572372221268,
+  "rows" : [ [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "text" : {
+        "type" : "interpolation",
+        "value" : "Download: {{context.mainDoc_ref.fileName}}"
+      },
+      "targetUrl" : {
+        "type" : "expression",
+        "value" : "documentDownloadURL"
+      },
+      "alignment" : {
+        "type" : "constant",
+        "value" : "left"
+      },
+      "buttonStyle" : {
+        "type" : "constant",
+        "value" : "link"
+      },
+      "target" : {
+        "type" : "constant",
+        "value" : "_self"
+      }
+    },
+    "reference" : "dcf07c3d-4fb8-4530-8bc0-19cf7c482fef",
+    "hasValidationError" : false,
+    "id" : "pbLink"
+  } ], [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "text" : {
+        "type" : "interpolation",
+        "value" : "Debug"
+      },
+      "level" : {
+        "type" : "constant",
+        "value" : "Level 2"
+      },
+      "alignment" : {
+        "type" : "constant",
+        "value" : "left"
+      }
+    },
+    "reference" : "4db4e972-d1c4-488a-afd4-f5342e37acc5",
+    "hasValidationError" : false,
+    "id" : "pbTitle"
+  } ], [ {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 12
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "text" : {
+        "type" : "interpolation",
+        "value" : "context: {{ context | json }}"
+      },
+      "alignment" : {
+        "type" : "constant",
+        "value" : "left"
+      },
+      "allowHTML" : {
+        "type" : "constant",
+        "value" : true
+      },
+      "labelHidden" : {
+        "type" : "constant",
+        "value" : true
+      },
+      "label" : {
+        "type" : "interpolation",
+        "value" : ""
+      },
+      "labelPosition" : {
+        "type" : "constant",
+        "value" : "top"
+      },
+      "labelWidth" : {
+        "type" : "constant",
+        "value" : 4
+      }
+    },
+    "reference" : "da163f73-5153-44a7-9915-3a0d0357311c",
+    "hasValidationError" : false,
+    "id" : "pbText"
+  }, {
+    "type" : "component",
+    "dimension" : {
+      "xs" : 6
+    },
+    "propertyValues" : {
+      "cssClasses" : {
+        "type" : "constant",
+        "value" : ""
+      },
+      "hidden" : {
+        "type" : "constant",
+        "value" : false
+      },
+      "caseId" : {
+        "type" : "expression",
+        "value" : "caseId"
+      },
+      "context" : {
+        "type" : "variable",
+        "value" : "context"
+      }
+    },
+    "reference" : "55dbd63b-24a1-49e2-9be1-35469a8ab1fa",
+    "hasValidationError" : false,
+    "id" : "customGetContextWidget"
+  } ] ],
+  "assets" : [ {
+    "id" : "a9765265-6ba5-4cfd-ba8a-a3470d0e7536",
+    "name" : "style.css",
+    "type" : "css",
+    "order" : 1,
+    "external" : false
+  } ],
+  "inactiveAssets" : [ ],
+  "data" : {
+    "context" : {
+      "type" : "json",
+      "value" : "{}",
+      "exposed" : false
+    },
+    "documentDownloadURL" : {
+      "type" : "expression",
+      "value" : "return \"/bonita/portal/\" + $data.context.mainDoc_ref.url;",
+      "exposed" : false
+    },
+    "caseId" : {
+      "type" : "urlparameter",
+      "value" : "id",
+      "exposed" : false
+    }
+  },
+  "hasValidationError" : false,
+  "uuid" : "9b56eed5-13fd-49a5-ae54-4199dc6a5810",
+  "type" : "form",
+  "description" : "Page generated with Bonita UI designer"
+}
